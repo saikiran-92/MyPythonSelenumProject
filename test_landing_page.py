@@ -18,6 +18,6 @@ class TestLandingPage(Toolbox):
         search_box = self.driver.find_element(By.CSS_SELECTOR, '#searchTerm')
         search_box.send_keys("faketest")
         search_box.send_keys(Keys.ENTER)
-        search_res = print(self.driver.find_element(By.CSS_SELECTOR, '.top_offset > h2').text)
+        search_res = self.driver.find_element(By.CSS_SELECTOR, '.top_offset > h2').text
         assert search_res == "Search Results:"
         time.sleep(5)
