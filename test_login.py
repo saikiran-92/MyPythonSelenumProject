@@ -1,28 +1,18 @@
 import time
 import os
-from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
 from utilibox import Toolbox
 
 
 class TestLogin(Toolbox):
-    load_dotenv()
-    secret_username = os.getenv('UNAME')
-    secret_password = os.getenv('PWORD')
-    invalid_password = os.getenv('INPWORD')
-
-    def test_url(self):
-        time.sleep(5)
-        self.driver.get(os.getenv('BASE_URL'))
-        page_url = self.driver.current_url
-        print(page_url)
-        assert os.getenv('BASE_URL') in page_url
 
     def test_title(self):
+        self.test_url()
         assert self.driver.title == "Zero - Personal Banking - Loans - Credit Cards"
 
     def test_login_with_valid_creds(self):
         time.sleep(5)
+        self.test_url()
         self.login(self.secret_username, self.secret_password)
         self.driver.back()
         time.sleep(2)
